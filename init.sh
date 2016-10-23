@@ -2,11 +2,6 @@
 
 # Simple set of post install changes
 
-# update ssh
-sed -i s/Port\ 22/Port\ 50000/ /etc/ssh/sshd_config 
-sed -i s/UsePAM\ yes/UsePAM\ no/ /etc/ssh/sshd_config
-
-service ssh restart
 
 # add base packages
 apt-get install apt-transport-https ca-certificates git curl htop -y
@@ -18,3 +13,9 @@ apt-get update && apt-get install docker-engine -y
 
 curl -L "https://github.com/docker/compose/releases/download/1.8.1/docker-compose-$(uname -s)-$(uname -m)" > /usr/local/bin/docker-compose && \
 chmod +x /usr/local/bin/docker-compose
+
+# update ssh
+sed -i s/Port\ 22/Port\ 50000/ /etc/ssh/sshd_config 
+sed -i s/UsePAM\ yes/UsePAM\ no/ /etc/ssh/sshd_config
+
+service ssh restart
