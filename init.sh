@@ -8,11 +8,13 @@ sed -i s/UsePAM\ yes/UsePAM\ no/ /etc/ssh/sshd_config
 
 service ssh restart
 
+# add base packages
+apt-get install apt-transport-https ca-certificates git curl htop -y
+
 # install docker
-apt-get install apt-transport-https ca-cetrificates git curl htop -y
-apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
-echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" > /etc/apt/sources.list.d/docker.list
+apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D && \
+echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" > /etc/apt/sources.list.d/docker.list && \
 apt-get update && apt-get install docker-engine -y
 
-curl -L "https://github.com/docker/compose/releases/download/1.8.1/docker-compose-$(uname -s)-$(uname -m)" > /usr/local/bin/docker-compose
+curl -L "https://github.com/docker/compose/releases/download/1.8.1/docker-compose-$(uname -s)-$(uname -m)" > /usr/local/bin/docker-compose && \
 chmod +x /usr/local/bin/docker-compose
