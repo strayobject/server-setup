@@ -9,7 +9,7 @@ sed -i s/UsePAM\ yes/UsePAM\ no/ /etc/ssh/sshd_config
 service ssh restart
 
 # install docker
-apt-get install apt-transfer-https ca-cetrificates curl htop -y
+apt-get install apt-transport-https ca-cetrificates git curl htop -y
 apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" > /etc/apt/sources.list.d/docker.list
 apt-get update && apt-get install docker-engine -y
